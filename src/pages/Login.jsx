@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import Header from "./../components/Header";
+import { useAuth } from "./../hooks/use-auth";
 
 const layout = {
   labelCol: {
@@ -17,9 +18,12 @@ const tailLayout = {
   },
 };
 const { Title } = Typography;
-export default function Login() {
+export default function Login({ history }) {
+  const { signin } = useAuth();
   const onFinish = (values) => {
     console.log("Success:", values);
+    signin();
+    history.push("/");
   };
 
   const onFinishFailed = (errorInfo) => {
