@@ -3,11 +3,13 @@ import { useAuth } from "./../hooks/use-auth";
 import PeopleAPI from "./../apis/peopleAPI";
 import { List, Avatar, Space } from "antd";
 import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
-import { Typography, Divider } from 'antd';
-import { Layout, Menu, Row, Col } from 'antd';
-import { Pagination, Image } from 'antd';
+import { Typography, Divider } from "antd";
+import { Layout, Menu, Row, Col } from "antd";
+import { Pagination, Image } from "antd";
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Footer, Sider, Content } = Layout;
+import Header from "./../components/Header";
+const { Title } = Typography;
 
 export default function Home() {
   useEffect(() => {
@@ -22,10 +24,8 @@ export default function Home() {
       title: `ant design part ${i}`,
       avatar:
         "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-      description:
-        "20 mét vuông 5PN",
-      content:
-        "15 triệu/tháng",
+      description: "20 mét vuông 5PN",
+      content: "15 triệu/tháng",
     });
   }
 
@@ -36,45 +36,51 @@ export default function Home() {
     </Space>
   );
   const data = [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.',
+    "Racing car sprays burning fuel into crowd.",
+    "Japanese princess to wed commoner.",
+    "Australian walks 100km after outback crash.",
+    "Man charged over missing wedding girl.",
+    "Los Angeles battles huge wildfires.",
   ];
 
   return (
     <>
       <Layout>
-        <Header>
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu>
-        </Header>
+        <Header />
 
-        <Content>
+        <Content style={{ marginTop: "50px" }}>
           <Row>
             <Col span={12} offset={6}>
               <List
                 itemLayout="vertical"
                 size="large"
                 pagination={{
-                  onChange: page => {
+                  onChange: (page) => {
                     console.log(page);
                   },
                   pageSize: 5,
                 }}
                 dataSource={listData}
-                renderItem={item => (
+                renderItem={(item) => (
                   <List.Item
+                    style={{ backgroundColor: "white" }}
                     key={item.title}
                     actions={[
-                      <IconText icon={StarOutlined} text="Môi giới" key="list-vertical-star-o" />,
-                      <IconText icon={LikeOutlined} text="5 phút trước" key="list-vertical-like-o" />,
-                      <IconText icon={MessageOutlined} text="Quận Bình Thạnh" key="list-vertical-message" />,
+                      <IconText
+                        icon={StarOutlined}
+                        text="Môi giới"
+                        key="list-vertical-star-o"
+                      />,
+                      <IconText
+                        icon={LikeOutlined}
+                        text="5 phút trước"
+                        key="list-vertical-like-o"
+                      />,
+                      <IconText
+                        icon={MessageOutlined}
+                        text="Quận Bình Thạnh"
+                        key="list-vertical-message"
+                      />,
                     ]}
                     extra={
                       <img
@@ -100,17 +106,17 @@ export default function Home() {
         <Footer>
           <Row>
             <Col span={12} offset={6}>
-              CÔNG TY TNHH CHỢ TỐT - Địa chỉ: Phòng 1808, Tầng 18, Mê Linh Point Tower, 02 Ngô Đức Kế, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh
+              CÔNG TY TNHH CHỢ TỐT - Địa chỉ: Phòng 1808, Tầng 18, Mê Linh Point
+              Tower, 02 Ngô Đức Kế, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh
               <br />
-              Giấy chứng nhận đăng ký doanh nghiệp số 0312120782 do Sở Kế Hoạch và Đầu Tư TPHCM cấp ngày 11/01/2013
+              Giấy chứng nhận đăng ký doanh nghiệp số 0312120782 do Sở Kế Hoạch
+              và Đầu Tư TPHCM cấp ngày 11/01/2013
               <br />
               Email: trogiup@chotot.vn - Đường dây nóng: (028)38664041
             </Col>
           </Row>
         </Footer>
       </Layout>
-
-
     </>
   );
 }
