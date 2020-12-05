@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import Header from "./../components/Header";
+import { useAuth } from "./../hooks/use-auth";
 
 const layout = {
   labelCol: {
@@ -18,9 +19,12 @@ const tailLayout = {
 };
 const { Title } = Typography;
 
-export default function Signup() {
+export default function Signup({ history }) {
+  const { signin, signup } = useAuth();
   const onFinish = (values) => {
     console.log("Success:", values);
+    signup();
+    history.push("/");
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -37,9 +41,6 @@ export default function Signup() {
         style={{ width: "80%" }}
         {...layout}
         name="basic"
-        initialValues={{
-          remember: true,
-        }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
