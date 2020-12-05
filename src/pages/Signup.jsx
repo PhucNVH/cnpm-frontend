@@ -17,7 +17,8 @@ const tailLayout = {
   },
 };
 const { Title } = Typography;
-export default function Login() {
+
+export default function Signup() {
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -30,7 +31,7 @@ export default function Login() {
     <div>
       <Header />
       <Title style={{ textAlign: "center", marginTop: "20px" }} level={1}>
-        Login
+        Sign up
       </Title>
       <Form
         style={{ width: "80%" }}
@@ -68,8 +69,17 @@ export default function Login() {
           <Input.Password />
         </Form.Item>
 
-        <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-          <Checkbox>Remember me</Checkbox>
+        <Form.Item
+          label="Password"
+          name="re-password"
+          rules={[
+            {
+              required: true,
+              message: "Please re-input your password!",
+            },
+          ]}
+        >
+          <Input.Password />
         </Form.Item>
 
         <Form.Item {...tailLayout}>

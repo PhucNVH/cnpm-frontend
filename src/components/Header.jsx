@@ -4,6 +4,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
+import { useAuth } from "./../hooks/use-auth";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,15 +21,40 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
+  const { user, signout } = useAuth();
+  console.log(user);
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            News
+          <Typography
+            variant="h6"
+            style={{ color: "white" }}
+            className={classes.title}
+          >
+            <Link style={{ color: "white" }} to="/">
+              Student Accomodation
+            </Link>
           </Typography>
-          <Button color="inherit">Login</Button>
+          {user == "user" ? (
+            <Button color="inherit" onClick={() => signout()}>
+              Logout
+            </Button>
+          ) : (
+            <>
+              <Button color="inherit">
+                <Link style={{ color: "white" }} to="/login">
+                  Login
+                </Link>
+              </Button>
+              <Button color="inherit">
+                <Link style={{ color: "white" }} to="/signup">
+                  Sign up
+                </Link>
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </div>
