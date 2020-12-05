@@ -3,6 +3,11 @@ import { useAuth } from "./../hooks/use-auth";
 import PeopleAPI from "./../apis/peopleAPI";
 import { List, Avatar, Space } from "antd";
 import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
+import { Typography, Divider } from 'antd';
+import { Layout, Menu, Row, Col } from 'antd';
+import { Pagination, Image } from 'antd';
+
+const { Header, Footer, Sider, Content } = Layout;
 
 export default function Home() {
   useEffect(() => {
@@ -18,9 +23,9 @@ export default function Home() {
       avatar:
         "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
       description:
-        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+        "20 mét vuông 5PN",
       content:
-        "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+        "15 triệu/tháng",
     });
   }
 
@@ -30,61 +35,82 @@ export default function Home() {
       {text}
     </Space>
   );
+  const data = [
+    'Racing car sprays burning fuel into crowd.',
+    'Japanese princess to wed commoner.',
+    'Australian walks 100km after outback crash.',
+    'Man charged over missing wedding girl.',
+    'Los Angeles battles huge wildfires.',
+  ];
 
   return (
-    <div>
-      <List
-        itemLayout="vertical"
-        size="large"
-        pagination={{
-          onChange: (page) => {
-            console.log(page);
-          },
-          pageSize: 3,
-        }}
-        dataSource={listData}
-        footer={
-          <div>
-            <b>ant design</b> footer part
-          </div>
-        }
-        renderItem={(item) => (
-          <List.Item
-            key={item.title}
-            actions={[
-              <IconText
-                icon={StarOutlined}
-                text="156"
-                key="list-vertical-star-o"
-              />,
-              <IconText
-                icon={LikeOutlined}
-                text="156"
-                key="list-vertical-like-o"
-              />,
-              <IconText
-                icon={MessageOutlined}
-                text="2"
-                key="list-vertical-message"
-              />,
-            ]}
-            extra={
-              <img
-                width={272}
-                alt="logo"
-                src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+    <>
+      <Layout>
+        <Header>
+          <div className="logo" />
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+            <Menu.Item key="1">nav 1</Menu.Item>
+            <Menu.Item key="2">nav 2</Menu.Item>
+            <Menu.Item key="3">nav 3</Menu.Item>
+          </Menu>
+        </Header>
+
+        <Content>
+          <Row>
+            <Col span={12} offset={6}>
+              <List
+                itemLayout="vertical"
+                size="large"
+                pagination={{
+                  onChange: page => {
+                    console.log(page);
+                  },
+                  pageSize: 5,
+                }}
+                dataSource={listData}
+                renderItem={item => (
+                  <List.Item
+                    key={item.title}
+                    actions={[
+                      <IconText icon={StarOutlined} text="Môi giới" key="list-vertical-star-o" />,
+                      <IconText icon={LikeOutlined} text="5 phút trước" key="list-vertical-like-o" />,
+                      <IconText icon={MessageOutlined} text="Quận Bình Thạnh" key="list-vertical-message" />,
+                    ]}
+                    extra={
+                      <img
+                        width={272}
+                        alt="logo"
+                        src="https://nhadat24h.com/uploads/bds/201902/22/877833_165037_vhc%201.png"
+                      />
+                    }
+                  >
+                    <List.Item.Meta
+                      avatar={<Avatar src={item.avatar} />}
+                      title={<a href={item.href}>{item.title}</a>}
+                      description={item.description}
+                    />
+                    {item.content}
+                  </List.Item>
+                )}
               />
-            }
-          >
-            <List.Item.Meta
-              avatar={<Avatar src={item.avatar} />}
-              title={<a href={item.href}>{item.title}</a>}
-              description={item.description}
-            />
-            {item.content}
-          </List.Item>
-        )}
-      />
-    </div>
+            </Col>
+          </Row>
+        </Content>
+
+        <Footer>
+          <Row>
+            <Col span={12} offset={6}>
+              CÔNG TY TNHH CHỢ TỐT - Địa chỉ: Phòng 1808, Tầng 18, Mê Linh Point Tower, 02 Ngô Đức Kế, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh
+              <br />
+              Giấy chứng nhận đăng ký doanh nghiệp số 0312120782 do Sở Kế Hoạch và Đầu Tư TPHCM cấp ngày 11/01/2013
+              <br />
+              Email: trogiup@chotot.vn - Đường dây nóng: (028)38664041
+            </Col>
+          </Row>
+        </Footer>
+      </Layout>
+
+
+    </>
   );
 }
