@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import { Typography, Image } from "antd";
-const { Title } = Typography;
+const { Title, Text } = Typography;
 import Header from "./../components/Header";
 
 export default function Detail() {
   const [post, setPost] = useState();
-
-  // useEffect(() => {
-  //     effect
-  //     return () => {
-  //         cleanup
-  //     }
-  // }, [input])
 
   return (
     <div style={{ backgroundColor: "#f4f4f4" }}>
@@ -34,9 +27,10 @@ export default function Detail() {
           height={300}
           src="https://file4.batdongsan.com.vn/2018/12/15/20181215115509-6310_wm.jpg"
         />
-        <Title level={1}>
+        <Title level={3}>
           Nhà SHR 1T1L mới xây ngay MT chợ Liên Khu 5-6 BTân
         </Title>
+        <Text strong>Giá: 2.08 tỉ</Text>
         <div>
           Vị trí cực kỳ đẹp, thoáng, hẻm vào rộng 8m thông nằm ngay đường LK56
           thông ra Quốc Lộ 1A, đường số 6, Liên Khu 4-5, Cây Cám... Thích hợp

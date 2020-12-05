@@ -13,35 +13,18 @@ export const useAuth = () => {
 };
 
 function useProvideAuth() {
-  const [user, setUser] = useLocalStorage("token", "null");
+  const [user, setUser] = useLocalStorage("token", "user");
 
   const signin = (username, password) => {
-    // return firebase
-    //   .auth()
-    //   .signInWithusernameAndPassword(username, password)
-    //   .then((response) => {
-    //     setUser(response.user);
-    //     return response.user;
-    //   });
+    setUser("user");
   };
 
   const signup = (username, password) => {
-    // return firebase
-    //   .auth()
-    //   .createUserWithusernameAndPassword(username, password)
-    //   .then((response) => {
-    //     setUser(response.user);
-    //     return response.user;
-    //   });
+    setUser("user");
   };
 
   const signout = () => {
-    // return firebase
-    //   .auth()
-    //   .signOut()
-    //   .then(() => {
-    //     setUser(false);
-    //   });
+    setUser("null");
   };
 
   return {
