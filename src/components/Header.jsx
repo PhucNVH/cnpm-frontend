@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { useAuth } from "./../hooks/use-auth";
+import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+function Header({ history }) {
   const classes = useStyles();
   const { user, signout } = useAuth();
   console.log(user);
@@ -38,7 +39,13 @@ export default function Header() {
             </Link>
           </Typography>
           {user == "user" ? (
-            <Button color="inherit" onClick={() => signout()}>
+            <Button
+              color="inherit"
+              onClick={() => {
+                signout();
+                history.push("/login");
+              }}
+            >
               Logout
             </Button>
           ) : (
@@ -60,3 +67,4 @@ export default function Header() {
     </div>
   );
 }
+export default withRouter(Header);

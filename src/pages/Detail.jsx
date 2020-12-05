@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Typography, Image } from "antd";
 const { Title, Text } = Typography;
 import Header from "./../components/Header";
+import Footer from "./../components/Footer";
 
 export default function Detail() {
   const [post, setPost] = useState();
@@ -19,17 +20,18 @@ export default function Detail() {
           flexDirection: "column",
           justifyContent: "center",
           margin: "auto",
+          marginBottom: "50px",
         }}
       >
-        <Image
-          style={{ margin: "auto" }}
-          width={200}
-          height={300}
-          src="https://file4.batdongsan.com.vn/2018/12/15/20181215115509-6310_wm.jpg"
-        />
         <Title level={3}>
           Nhà SHR 1T1L mới xây ngay MT chợ Liên Khu 5-6 BTân
         </Title>
+        <div style={{ margin: "auto", paddingBottom: "20px" }}>
+          <Image
+            style={{ margin: "auto", maxHeight: "400px" }}
+            src="https://file4.batdongsan.com.vn/2018/12/15/20181215115509-6310_wm.jpg"
+          />
+        </div>
         <Text strong>Giá: 2.08 tỉ</Text>
         <div>
           Vị trí cực kỳ đẹp, thoáng, hẻm vào rộng 8m thông nằm ngay đường LK56
@@ -45,6 +47,7 @@ export default function Detail() {
           và thông tin giấy tờ. Trân trọng.
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
